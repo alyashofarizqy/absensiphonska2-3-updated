@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Mona Sans';
+	src: url('fonts/Mona-Sans.woff2') format('woff2 supports variations'),
+		url('fonts/Mona-Sans.woff2') format('woff2-variations');
+	font-weight: 200 900;
+	font-stretch: 75% 125%;
+}
+
+* {
+	@apply transition-colors duration-300 ease-in-out !important;
+}
+
+::selection {
+	@apply bg-secondary-200 text-zinc-900;
+}
+
+[x-cloak] {
+	display: none !important;
+}
