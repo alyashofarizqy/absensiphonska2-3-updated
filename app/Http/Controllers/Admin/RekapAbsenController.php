@@ -60,7 +60,6 @@ class RekapAbsenExport implements FromCollection, WithHeadings, WithMapping
             $rekap->user->nik,
             $rekap->user->plant,
             $rekap->user->pt,
-            $rekap->user->tanggal_lahir ? $rekap->user->tanggal_lahir->format('d/m/Y') : null,
             $rekap->tanggal,
             $rekap->shift,
 

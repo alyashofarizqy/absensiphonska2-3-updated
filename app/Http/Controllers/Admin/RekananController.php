@@ -17,10 +17,21 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class RekananExport implements FromCollection, WithHeadings
 {
+	// set filter
+	protected $filter;
+
+	public function __construct($filter)
+	{
+		$this->filter = $filter;
+	}
+
     // get user rekap absen
     public function collection(): Collection
     {
-        return Rekanan::all();
+        return Rekanan::orderBy('created_at', 'desc')
+			->when($this->filter, function ($query, $search) {
+				return $query->where('nama', 'like', "%{$search}%");
+			})->get();
     }
 
     // set excel headings
@@ -53,8 +64,11 @@ class RekananController extends Controller
     /**
      * Download the specified resource.
      */
-    public function download()
+    public function download(Request $request)
     {
-        return Excel::download(new RekananExport, 'rekanans.csv', ExcelType::CSV);
+		// filter rekanan by search (if any)
+		$search = $request->query('search');
+
+        return Excel::download(new RekananExport($search), 'rekanans.xlsx', ExcelType::XLSX);
     }
 }
