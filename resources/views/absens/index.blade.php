@@ -96,7 +96,7 @@
                 <div
                     class="bg-white dark:bg-zinc-800 overflow-hidden shadow-sm sm:rounded-lg p-4 md:p-5 border border-zinc-200 dark:border-zinc-700">
                     <div class="relative w-full aspect-[4/3] mb-4 rounded-lg overflow-hidden">
-                        <img src="{{ $checkin?->photo }}" alt="checkin photo"
+                        <img src="{{ asset($checkin?->photo) }}" alt="checkin photo"
                             class="w-full h-full object-cover object-center bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center
                             text-zinc-500 dark:text-zinc-400">
                         <span
